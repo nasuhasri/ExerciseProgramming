@@ -59,5 +59,41 @@ namespace ExerciseProgramming
 
             Console.WriteLine($"Sum of the numbers 1 to your input: {result}");
         }
+
+        public static void EX5()
+        {
+            Console.Write("Please enter a number: ");
+            var number = int.Parse(Console.ReadLine());
+
+            var sum = 0;
+
+            for (int i = 0; i < number; i++)
+            {
+                if (i % 3 == 0 || i % 5 == 0)
+                {
+                    Console.WriteLine($"Number divisible number by 3 and 5: {i}");
+                    sum += i;
+                }
+            }
+
+            Console.WriteLine($"Sum of the numbers: {sum}");
+        }
+
+        public static void EX6()
+        {
+            //
+        }
+
+        public static void EX7()
+        {
+            Console.Write("Please enter a number to multiply: ");
+            var number = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= 12; i++)
+            {
+                var result = i * number;
+                Console.WriteLine($"{i} x {number} = {result}");
+            }
+        }
     }
 }
