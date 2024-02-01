@@ -227,5 +227,23 @@ namespace ExerciseProgramming
                 }
             }
         }
+
+        public static void EX11()
+        {
+            double resultSum = 0.0;
+
+            for (int k = 1; k <= Math.Pow(10, 6); k++)
+
+            {
+                var upperOperation = Math.Pow(-1, k + 1);
+                var lowerOperation = (2 * k) - 1;
+                var divideOperation = upperOperation / lowerOperation;
+                var multiplyOperation = 4 * divideOperation;
+
+                resultSum += multiplyOperation;
+            }
+
+            Console.WriteLine($"Result operation: {resultSum}");
+        }
     }
 }
