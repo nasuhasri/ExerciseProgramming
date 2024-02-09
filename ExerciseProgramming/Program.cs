@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace ExerciseProgramming
 {
@@ -13,7 +14,6 @@ namespace ExerciseProgramming
             Console.WriteLine("List and strings exercise: ");
 
             var numList = new List<int> { 1, 5, 3, 6, 9, 24, 14 };
-            getTotalList(numList);
         }
 
         public static void EX1()
@@ -125,6 +125,65 @@ namespace ExerciseProgramming
             }
 
             Console.WriteLine($"Total sum: {sum}");
+        }
+
+        public static void EX6()
+        {
+            var word = "malayalam";
+            var newWord = "";
+
+            for (int i = word.Length - 1; i >= 0; i--)
+            {
+                newWord += word[i];
+            }
+
+            Console.WriteLine(newWord);
+
+            if (newWord == word)
+            {
+                Console.WriteLine("Palindrome");
+            }
+            else
+            {
+                Console.WriteLine("Not Palindrome");
+            }
+        }
+
+        public static void EX7()
+        {
+            var numList = new List<int> { 1, 5, 3, 6, 9, 24, 14 };
+
+            var result = sum_using_recursion(numList);
+            Console.WriteLine(result);
+
+            var sumForLoop = 0;
+            for (int i = 0; i < numList.Count; i++)
+            {
+                sumForLoop += numList[i];
+            }
+
+            int j = 0;
+            var sumWhileLoop = 0;
+            while (j < numList.Count)
+            {
+                sumWhileLoop += numList[j];
+                j++;
+            }
+
+            Console.WriteLine($"Sum for loop: {sumForLoop}. Sum while loop: {sumWhileLoop}");
+        }
+
+        public static int sum_using_recursion(List<int> numList)
+        {
+            if (numList.Count == 1)
+            {
+                return numList[0];
+            }
+            else
+            {
+                //Return the sum of the first element and the sum of the rest of the elements
+                return numList[0] + sum_using_recursion(numList.GetRange(1, numList.Count - 1));
+            }
         }
     }
 }
