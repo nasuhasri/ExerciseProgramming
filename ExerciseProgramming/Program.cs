@@ -14,6 +14,8 @@ namespace ExerciseProgramming
             Console.WriteLine("List and strings exercise: ");
 
             var numList = new List<int> { 1, 5, 3, 6, 9, 24, 14 };
+
+            
         }
 
         public static void EX1()
@@ -183,6 +185,76 @@ namespace ExerciseProgramming
             {
                 //Return the sum of the first element and the sum of the rest of the elements
                 return numList[0] + sum_using_recursion(numList.GetRange(1, numList.Count - 1));
+            }
+        }
+
+        public static void EX9()
+        {
+            var numList = new List<int> { 1, 5, 3, 6, 9, 24, 14 };
+            var numList1 = new List<int> { 10, 20, 30 };
+
+            numList.AddRange(numList1);
+
+            for (int i = 0; i < numList.Count; i++)
+            {
+                Console.WriteLine(numList[i]);
+            }
+        }
+
+        public static void EX10()
+        {
+            var numList1 = new List<int> { 10, 20, 30 };
+            var numList2 = new List<int> { 1, 2, 3 };
+
+            var newList = new List<int>();
+            for (int i = 0; i < numList1.Count; i++)
+            {
+                newList.Add(numList1[i]);
+                newList.Add(numList2[i]);
+            }
+
+            for (int i = 0; i < newList.Count; i++)
+            {
+                Console.Write(newList[i] + " ");
+            }
+        }
+
+        public static void EX11()
+        {
+            var list1 = new List<int> { 1, 4, 6 };
+            var list2 = new List<int> { 2, 3, 5 };
+
+            list1.AddRange(list2);
+            list1.Sort();
+
+            for (int i = 0; i < list1.Count; i++)
+            {
+                Console.WriteLine(list1[i]);
+            }
+        }
+
+        public static void EX12()
+        {
+            var list1 = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+            var elements = 2;
+
+            for (int i = 0; i < elements; i++)
+            {
+                //this solution is wrong because we are using dynamic i - index number
+                //var numToAdd = list1[i];
+                //list1.Remove(list1[i]);
+                //list1.Add(numToAdd);
+
+                int firstElement = list1[0];
+                list1.RemoveAt(0);
+                list1.Add(firstElement);
+            }
+
+            for (int i = 0; i < list1.Count; i++)
+            {
+                Console.Write(list1[i]);
+                Console.Write("-");
             }
         }
     }
