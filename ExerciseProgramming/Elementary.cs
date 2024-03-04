@@ -212,7 +212,7 @@ namespace ExerciseProgramming
                     }
                     else if (i % 400 == 0)
                     {
-                        Console.WriteLine($"{i} is a leap year.");
+                        Console.Write($"{i} is a leap year.");
                     }
                 }
             }

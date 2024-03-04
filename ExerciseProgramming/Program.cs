@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Xml.Linq;
 
@@ -13,9 +15,23 @@ namespace ExerciseProgramming
 
             Console.WriteLine("List and strings exercise: ");
 
-            var numList = new List<int> { 1, 5, 3, 6, 9, 24, 14 };
+            var text = "The quick brown fox";
+            var word = new List<string>();
 
-            
+            word = text.Split(' ').ToList();
+
+            var reverseWord = "";
+
+            for (int i = 0; i < word.Count; i++)
+            {
+                var firstChar = word[i].Substring(0, 1);
+                word[i] = word[i].Insert(word[i].Length, firstChar);
+                word[i] = word[i].Remove(0, 1);
+
+                reverseWord += word[i] + "ay ";
+            }
+
+            Console.WriteLine(reverseWord);
         }
 
         public static void EX1()
@@ -256,6 +272,141 @@ namespace ExerciseProgramming
                 Console.Write(list1[i]);
                 Console.Write("-");
             }
+        }
+
+        public static void EX13()
+        {
+            var num1 = 0; var num2 = 1; var nextTerm = 0;
+
+            while (nextTerm <= 100)
+            {
+                Console.WriteLine(nextTerm);
+
+                num1 = num2;
+                num2 = nextTerm;
+                nextTerm = num1 + num2;
+            }
+        }
+
+        public static List<int> getListDigits(int number)
+        {
+            var numString = number.ToString();
+
+            var list = new List<int>();
+
+            for (int i = 0; i < numString.Length; i++)
+            {
+                Console.WriteLine(numString[i]);
+                list.Add(numString[i]);
+            }
+
+            return list;
+        }
+
+        public static void EX14()
+        {
+            var number = 2342;
+            var listNum = getListDigits(number);
+        }
+
+        public static int ConvertListToInt(List<int> numList)
+        {
+            var stringNum = "";
+
+            for (int i = 0; i < numList.Count; i++)
+            {
+                var num = numList[i].ToString();
+                stringNum = stringNum + num;
+            }
+
+            var element = int.Parse(stringNum);
+
+            return element;
+        }
+
+        public static void EX15()
+        {
+            var numList = new List<int> { 5, 6, 3 };
+            var numList1 = new List<int> { 8, 4, 2 };
+
+            var element = ConvertListToInt(numList);
+            var element1 = ConvertListToInt(numList1);
+
+            var addResult = element + element1;
+            Console.WriteLine(addResult);
+        }
+
+        public static int GetMaxLengthWord(List<string> strList)
+        {
+            var maxLongestWord = 0;
+
+            for (int i = 0; i < strList.Count; i++)
+            {
+                var longestWord = strList[i].Length;
+
+                if (longestWord > maxLongestWord)
+                {
+                    maxLongestWord = longestWord;
+                }
+            }
+
+            return maxLongestWord;
+        }
+
+        public static void EX19()
+        {
+            var strList = new List<string> { "Hello", "World", "Nasuha Asri", "in", "a", "frame" };
+
+            var maxLongestWord = GetMaxLengthWord(strList);
+
+            var width = maxLongestWord + 4;
+
+            Console.WriteLine(new string('*', width));
+
+            for (int i = 0; i < strList.Count; i++)
+            {
+                int paddingNeeded = maxLongestWord - strList[i].Length;
+                Console.WriteLine($"* {strList[i]}{new string(' ', paddingNeeded)} *");
+
+
+                //if (strList[i].Length < maxLongestWord)
+                //{
+                //    var balance = maxLongestWord - strList[i].Length;
+                //    Console.Write($"* {strList[i]} ");
+
+                //    for (int j = 0; j < balance; j++)
+                //    {
+                //        Console.Write("*");
+                //    }
+                //}
+                //else
+                //{
+                //    Console.WriteLine($"* {strList[i]} *");
+                //}
+            }
+
+            Console.WriteLine(new string('*', width));
+        }
+
+        public static void EX20()
+        {
+            var text = "The quick brown fox";
+            var word = new List<string>();
+
+            word = text.Split(' ').ToList();
+
+            var reverseWord = "";
+
+            for (int i = 0; i < word.Count; i++)
+            {
+                var firstChar = word[i].Substring(0, 1);
+                word[i] = word[i].Insert(word[i].Length, firstChar);
+                word[i] = word[i].Remove(0, 1);
+
+                reverseWord += word[i] + "ay ";
+            }
+
+            Console.WriteLine(reverseWord);
         }
     }
 }
